@@ -1,0 +1,371 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block kullanici %}
+{{ user.get_full_name }}
+{% endblock %}
+
+{% block title %}Analiz{% endblock %}
+
+{% block body %}
+<div class="container" style="margin-top: 40px; margin-bottom: 40px;">
+    <div class="container">
+        <div class="row col-lg-6">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Polinom Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+
+        <div class="row col-lg-6">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Lineer Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik2.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row col-lg-6" style="margin-top: 40px;">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Karar Ağacı Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik3.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+
+        <div class="row col-lg-6" style="margin-top: 40px;">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Rastgele Orman Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik4.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 40px;">
+        <div class="row col-lg-6">
+        <center><form method="POST">
+        {% csrf_token %}
+
+        <div class="inputfield">
+          <label>Mezuniyet Ortalaması: </label>
+            <input type="number" class="input" value="50.00" min="50" max="100" step="0.01" name="grafik">
+
+       </div>
+
+        <div class="inputfield">
+          <button type="submit" name="submit" value="grafik" class="btn login-btn">GÖNDER</button>
+      </div>
+
+        </form></center>
+        {% if sonuc != 0 or sonuc2 != 0 or sonuc3 != 0 or sonuc4 != 0 %}
+        <center><table border="2" width="320px;" style="margin-top: 40px;">
+
+          <tr>
+             <td align="center">Girilen Mezuniyet Ortalaması</td>
+             <td align="center">{{ortalama}}</td>
+          </tr>
+        {% if sonuc != 0 %}
+          <tr>
+             <td align="center">Polinomik Regresyon Sonucu</td>
+             <td align="center">{{sonuc}} gün</td>
+          </tr>
+        {% endif %}
+        {% if sonuc2 != 0 %}
+            <tr>
+             <td align="center">Lineer Regresyon Sonucu</td>
+             <td align="center">{{sonuc2}} gün</td>
+          </tr>
+        {% endif %}
+        {% if sonuc3 != 0 %}
+            <tr>
+             <td align="center">Karar Ağacı Regresyon Sonucu</td>
+             <td align="center">{{sonuc3}} gün</td>
+          </tr>
+        {% endif %}
+        {% if sonuc4 != 0 %}
+            <tr>
+             <td align="center">Rastgele Orman Regresyon Sonucu</td>
+             <td align="center">{{sonuc4}} gün</td>
+          </tr>
+        {% endif %}
+        </table></center>
+        {% endif %}
+        </div>
+
+        <div class="row col-lg-6">
+
+        <center><table border="2" width="500px;">
+
+          <tr>
+             <td align="center">&nbsp;</td>
+             <td align="center">R Kare</td>
+             <td align="center">MAE</td>
+             <td align="center">MSE</td>
+             <td align="center">RMSE</td>
+          </tr>
+          <tr>
+             <td align="center">Polinomik Regresyon</td>
+             <td align="center">{{polinomikresresyonR2}}</td>
+             <td align="center">{{polinomikresresyonmae}}</td>
+             <td align="center">{{polinomikresresyonmse}}</td>
+             <td align="center">{{polinomikresresyonrmse}}</td>
+          </tr>
+            <tr>
+             <td align="center">Lineer Regresyon</td>
+             <td align="center">{{linearregresyonR2}}</td>
+                <td align="center">{{linearregresyonmae}}</td>
+             <td align="center">{{linearregresyonmse}}</td>
+             <td align="center">{{linearregresyonrmse}}</td>
+          </tr>
+            <tr>
+             <td align="center">Karar Ağacı Regresyon</td>
+             <td align="center">{{kararagacıR2}}</td>
+            <td align="center">{{kararagacımae}}</td>
+             <td align="center">{{kararagacımse}}</td>
+             <td align="center">{{kararagacırmse}}</td>
+          </tr>
+            <tr>
+             <td align="center">Rastgele Orman Regresyon</td>
+             <td align="center">{{randomforestR2}}</td>
+                <td align="center">{{randomforestmae}}</td>
+             <td align="center">{{randomforestmse}}</td>
+             <td align="center">{{randomforestrmse}}</td>
+          </tr>
+        </table></center>
+        </div>
+    </div>
+
+
+    <div class="container" style="margin-top: 40px;">
+        <div class="row col-lg-6">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Polinom Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik6.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+
+        <div class="row col-lg-6">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Lineer Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik5.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row col-lg-6" style="margin-top: 40px;">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Karar Ağacı Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik7.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+
+        <div class="row col-lg-6" style="margin-top: 40px;">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Rastgele Orman Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik8.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 40px;">
+        <div class="row col-lg-6">
+        <center><form method="POST">
+        {% csrf_token %}
+
+        <div class="inputfield">
+          <label>Mezuniyet Yılı: </label>
+            <input type="number" class="input" value="2001" min="2001" max="2011" step="1" name="grafik2">
+
+       </div>
+
+        <div class="inputfield">
+          <button type="submit" name="submit" value="grafik2" class="btn login-btn">GÖNDER</button>
+      </div>
+
+        </form></center>
+        {% if sonuc21 != 0 or sonuc22 != 0 or sonuc23 != 0 or sonuc24 != 0 %}
+        <center><table border="2" width="320px;" style="margin-top: 40px;">
+
+          <tr>
+             <td align="center">Girilen Mezuniyet Yılı</td>
+             <td align="center">{{yil}}</td>
+          </tr>
+        {% if sonuc21 != 0 %}
+          <tr>
+             <td align="center">Polinomik Regresyon Sonucu</td>
+             <td align="center">{{sonuc21}} gün</td>
+          </tr>
+        {% endif %}
+        {% if sonuc22 != 0 %}
+            <tr>
+             <td align="center">Lineer Regresyon Sonucu</td>
+             <td align="center">{{sonuc22}} gün</td>
+          </tr>
+        {% endif %}
+        {% if sonuc23 != 0 %}
+            <tr>
+             <td align="center">Karar Ağacı Regresyon Sonucu</td>
+             <td align="center">{{sonuc23}} gün</td>
+          </tr>
+        {% endif %}
+        {% if sonuc24 != 0 %}
+            <tr>
+             <td align="center">Rastgele Orman Regresyon Sonucu</td>
+             <td align="center">{{sonuc24}} gün</td>
+          </tr>
+        {% endif %}
+        </table></center>
+        {% endif %}
+        </div>
+
+    <div class="row col-lg-6">
+
+        <center><table border="2" width="500px;">
+
+          <tr>
+             <td align="center">&nbsp;</td>
+             <td align="center">R Kare</td>
+             <td align="center">MAE</td>
+             <td align="center">MSE</td>
+             <td align="center">RMSE</td>
+          </tr>
+          <tr>
+             <td align="center">Polinomik Regresyon</td>
+             <td align="center">{{polinomikresresyonR22}}</td>
+             <td align="center">{{polinomikresresyonmae2}}</td>
+             <td align="center">{{polinomikresresyonmse2}}</td>
+             <td align="center">{{polinomikresresyonrmse2}}</td>
+          </tr>
+            <tr>
+             <td align="center">Lineer Regresyon</td>
+             <td align="center">{{linearregresyonR22}}</td>
+                <td align="center">{{linearregresyonmae2}}</td>
+             <td align="center">{{linearregresyonmse2}}</td>
+             <td align="center">{{linearregresyonrmse2}}</td>
+          </tr>
+            <tr>
+             <td align="center">Karar Ağacı Regresyon</td>
+             <td align="center">{{kararagacıR22}}</td>
+            <td align="center">{{kararagacımae2}}</td>
+             <td align="center">{{kararagacımse2}}</td>
+             <td align="center">{{kararagacırmse2}}</td>
+          </tr>
+            <tr>
+             <td align="center">Rastgele Orman Regresyon</td>
+             <td align="center">{{randomforestR22}}</td>
+                <td align="center">{{randomforestmae2}}</td>
+             <td align="center">{{randomforestmse2}}</td>
+             <td align="center">{{randomforestrmse2}}</td>
+          </tr>
+        </table></center>
+        </div>
+    </div>
+
+
+
+    <div class="container" style="margin-top: 40px;">
+        <div class="row col-lg-6">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Polinom Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik10.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+
+        <div class="row col-lg-6">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Lineer Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik9.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row col-lg-6" style="margin-top: 40px;">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Karar Ağacı Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik11.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+
+        <div class="row col-lg-6" style="margin-top: 40px;">
+            <center><header style="font-size: 30px; background-color: white; width: 500px; margin-right: 40px;">Rastgele Orman Regresyon</header></center>
+            <img src="{% static 'grafikler/grafik12.png' %}" alt="Mezuniyet Ortalamasının iş bulma süresine etkisi" width="500" height="400">
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 40px;">
+        <div class="row col-lg-6">
+        <center><form method="POST">
+        {% csrf_token %}
+
+        <div class="inputfield">
+          <label>Mezuniyet Yılı: </label>
+            <input type="number" class="input" value="2001" min="2001" max="2011" step="1" name="grafik3">
+
+       </div>
+
+        <div class="inputfield">
+          <button type="submit" name="submit" value="grafik3" class="btn login-btn">GÖNDER</button>
+      </div>
+
+        </form></center>
+        {% if sonuc31 != 0 or sonuc32 != 0 or sonuc33 != 0 or sonuc34 != 0 %}
+        <center><table border="2" width="320px;" style="margin-top: 40px;">
+
+          <tr>
+             <td align="center">Girilen Mezuniyet Yılı</td>
+             <td align="center">{{yil2}}</td>
+          </tr>
+        {% if sonuc31 != 0 %}
+          <tr>
+             <td align="center">Polinomik Regresyon Sonucu</td>
+             <td align="center">{{sonuc31}} ₺</td>
+          </tr>
+        {% endif %}
+        {% if sonuc32 != 0 %}
+            <tr>
+             <td align="center">Lineer Regresyon Sonucu</td>
+             <td align="center">{{sonuc32}} ₺</td>
+          </tr>
+        {% endif %}
+        {% if sonuc33 != 0 %}
+            <tr>
+             <td align="center">Karar Ağacı Regresyon Sonucu</td>
+             <td align="center">{{sonuc33}} ₺</td>
+          </tr>
+        {% endif %}
+        {% if sonuc34 != 0 %}
+            <tr>
+             <td align="center">Rastgele Orman Regresyon Sonucu</td>
+             <td align="center">{{sonuc34}} ₺</td>
+          </tr>
+        {% endif %}
+        </table></center>
+        {% endif %}
+        </div>
+
+    <div class="row col-lg-6">
+
+        <center><table border="2" width="500px;">
+
+          <tr>
+             <td align="center">&nbsp;</td>
+             <td align="center">R Kare</td>
+             <td align="center">MAE</td>
+             <td align="center">MSE</td>
+             <td align="center">RMSE</td>
+          </tr>
+          <tr>
+             <td align="center">Polinomik Regresyon</td>
+             <td align="center">{{polinomikresresyonR23}}</td>
+             <td align="center">{{polinomikresresyonmae3}}</td>
+             <td align="center">{{polinomikresresyonmse3}}</td>
+             <td align="center">{{polinomikresresyonrmse3}}</td>
+          </tr>
+            <tr>
+             <td align="center">Lineer Regresyon</td>
+             <td align="center">{{linearregresyonR23}}</td>
+                <td align="center">{{linearregresyonmae3}}</td>
+             <td align="center">{{linearregresyonmse3}}</td>
+             <td align="center">{{linearregresyonrmse3}}</td>
+          </tr>
+            <tr>
+             <td align="center">Karar Ağacı Regresyon</td>
+             <td align="center">{{kararagacıR23}}</td>
+            <td align="center">{{kararagacımae3}}</td>
+             <td align="center">{{kararagacımse3}}</td>
+             <td align="center">{{kararagacırmse3}}</td>
+          </tr>
+            <tr>
+             <td align="center">Rastgele Orman Regresyon</td>
+             <td align="center">{{randomforestR23}}</td>
+                <td align="center">{{randomforestmae3}}</td>
+             <td align="center">{{randomforestmse3}}</td>
+             <td align="center">{{randomforestrmse3}}</td>
+          </tr>
+        </table></center>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
