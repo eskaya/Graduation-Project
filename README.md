@@ -1,6 +1,6 @@
 #Graduation - Project / Student Information System
-<p>Our project is built on a web platform that will provide easy access to Faculty members, students. It aims to make the communication between the graduates and current students fast and easy by establishing a bridge. With the statistics created by the help of the users, our students  get ideas about the departmental courses and about their upcoming career. <br>
-The effects of their education on finding a job statics are graphically presented to the users. A dynamic platform has been created where lecture notes, internships and job postings can be shared. With the data obtained, data such as employment time and salary were calculated using machine learning.</p><br>
+<p>   Our project is built on a web platform that will provide easy access to Faculty members, students. It aims to make the communication between the graduates and current students fast and easy by establishing a bridge. With the statistics created by the help of the users, our students  get ideas about the departmental courses and about their upcoming career. <br>
+   The effects of their education on finding a job statics are graphically presented to the users. A dynamic platform has been created where lecture notes, internships and job postings can be shared. With the data obtained, data such as employment time and salary were calculated using machine learning.</p><br>
 
 ![giris1](https://user-images.githubusercontent.com/23220710/111907787-eac55e80-8a67-11eb-8456-7161fefed390.PNG)<br>
 ![alinti-1](https://user-images.githubusercontent.com/23220710/111907790-ee58e580-8a67-11eb-86d7-22c3c6fdafa8.PNG)<br>
