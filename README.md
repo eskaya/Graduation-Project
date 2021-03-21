@@ -7,6 +7,4 @@ The effects of their education on finding a job statics are graphically presente
 ![alinti-3](https://user-images.githubusercontent.com/23220710/111907793-f153d600-8a67-11eb-9ce3-8fe86ee06077.PNG)<br>
 ![alinti-4](https://user-images.githubusercontent.com/23220710/111907795-f1ec6c80-8a67-11eb-9a08-b3a0140bbc11.PNG)<br>
 ![a1](https://user-images.githubusercontent.com/23220710/111908048-c28a2f80-8a68-11eb-91f4-592ead444a49.PNG)<br>
-![a2](https://user-images.githubusercontent.com/23220710/111908049-c322c600-8a68-11eb-9c07-890a8500c664.PNG)<br>
-![a5](https://user-images.githubusercontent.com/23220710/111908052-c74ee380-8a68-11eb-8c6c-e8f39753a7ca.PNG)<br>
 ![a4](https://user-images.githubusercontent.com/23220710/111908063-d03fb500-8a68-11eb-82f9-7d459c399539.PNG)<br>
