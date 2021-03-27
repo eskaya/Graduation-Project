@@ -7,4 +7,7 @@
 ![is-ilan](https://user-images.githubusercontent.com/23220710/111908993-75a85800-8a6c-11eb-9ab6-8ac09ec150ea.PNG)
 ![transkript-talep](https://user-images.githubusercontent.com/23220710/111908994-77721b80-8a6c-11eb-8a5e-33f3d4a4af2c.PNG)
 ![randevu](https://user-images.githubusercontent.com/23220710/111909007-8b1d8200-8a6c-11eb-8fbd-de5398c80dd8.PNG)
+![s7](https://user-images.githubusercontent.com/23220710/112727788-30d16500-8f35-11eb-862e-fa84cecfda28.PNG)
+
+
 
